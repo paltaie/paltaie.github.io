@@ -1,0 +1,8 @@
+---
+applications:
+ - name: paltaie.com
+   random-route: true
+   path: target/website.war
+   memory: 256M
+   instances: 1
+buildpack: java_buildpack
