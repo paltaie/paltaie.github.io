@@ -17,22 +17,23 @@ public class HSTSFilter implements Filter {
     public void init(FilterConfig filterConfig) {
     }
 
-    public void doFilter(ServletRequest req, ServletResponse res,
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
                          FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest httpServletRequest = (HttpServletRequest) req;
-        HttpServletResponse resp = (HttpServletResponse) res;
-
-        Optional<String> headerOptional = Collections.list(((HttpServletRequest) req).getHeaderNames())
+        HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
+        Optional<String> headerOptional = Collections.list(((HttpServletRequest) servletRequest).getHeaderNames())
                 .stream()
                 .filter(header -> header.toUpperCase().equals("X-FORWARDED-PROTO"))
                 .findFirst();
         if (headerOptional.isPresent()) {
             String header = headerOptional.get();
             if (httpServletRequest.getHeader(header).toUpperCase().equals("HTTP")) {
-                resp.setHeader("Strict-Transport-Security", "max-age=31622400; includeSubDomains");
+                HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
+                httpServletResponse
+                        .sendRedirect("https://" + servletRequest.getServerName() + httpServletRequest.getServletPath());
+                return;
             }
         }
-        chain.doFilter(req, resp);
+        chain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
