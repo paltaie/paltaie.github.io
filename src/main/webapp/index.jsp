@@ -1,6 +1,24 @@
 <html lang="en">
-  <title>paltaie.com: Oh yeah!</title>
+  <head>
+    <title>paltaie.com: Oh yeah!</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+    <style type="text/css">
+      .hello {
+        text-align: center;
+        font-family: "Helvetica", sans-serif;
+        margin: auto;
+      }
+    </style>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+  </head>
   <body>
-    <h1>Stay tuned!</h1>
+    <div class="hello">
+      <h1>paltaie.com</h1>
+      <h2 class="fa-4x">
+        <a href="https://linkedin.com/in/paltaie"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/paltaie"><i class="fab fa-twitter"></i></a>
+      </h2>
+    </div>
   </body>
 </html>
