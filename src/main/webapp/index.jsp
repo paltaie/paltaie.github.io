@@ -8,6 +8,14 @@
         font-family: "Helvetica", sans-serif;
         margin: auto;
       }
+
+      .linkedin {
+        color: #0077b5
+      }
+
+      .twitter {
+        color: #00aced
+      }
     </style>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -16,8 +24,8 @@
     <div class="hello">
       <h1>paltaie.com</h1>
       <h2 class="fa-4x">
-        <a href="https://linkedin.com/in/paltaie"><i class="fab fa-linkedin"></i></a>
-        <a href="https://twitter.com/paltaie"><i class="fab fa-twitter"></i></a>
+        <a class="linkedin" href="https://linkedin.com/in/paltaie"><i class="fab fa-linkedin"></i></a>
+        <a class="twitter"  href="https://twitter.com/paltaie"><i class="fab fa-twitter"></i></a>
       </h2>
     </div>
   </body>
