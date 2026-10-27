@@ -1,33 +1,370 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>paltaie.com: Oh yeah!</title>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
-    <style type="text/css">
-      .hello {
-        text-align: center;
-        font-family: "Helvetica", sans-serif;
-        margin: auto;
-      }
-
-      .linkedin {
-        color: #0077b5
-      }
-
-      .twitter {
-        color: #00aced
-      }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Patrick Altaie</title>
+    <meta name="description" content="Patrick Altaie: Principal Engineer at Icon Solutions. Resilient, reactive systems for fintech and payments.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+      :root {
+        --bg: #fafaf9;
+        --surface: #ffffff;
+        --text: #1c1917;
+        --muted: #57534e;
+        --faint: #a8a29e;
+        --border: #e7e5e4;
+        --accent: #0f766e;
+        --accent-soft: #ccfbf1;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0c0a09;
+          --surface: #1c1917;
+          --text: #f5f5f4;
+          --muted: #a8a29e;
+          --faint: #78716c;
+          --border: #292524;
+          --accent: #2dd4bf;
+          --accent-soft: #134e4a;
+        }
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", "Helvetica", sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      .page {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 64px 16px 48px;
+      }
+
+      header { margin-bottom: 48px; }
+
+      h1 {
+        font-size: 2.5rem;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin: 0 0 8px;
+      }
+
+      .role {
+        font-size: 1.15rem;
+        color: var(--muted);
+        margin: 0 0 16px;
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 20px;
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+      }
+
+      .meta i { color: var(--faint); margin-right: 6px; }
+
+      .links { display: flex; gap: 10px; flex-wrap: wrap; }
+
+      .links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: var(--surface);
+        color: var(--text);
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .links a:hover { border-color: var(--accent); text-decoration: none; }
+
+      section { margin-bottom: 48px; }
+
+      h2 {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        margin: 0 0 20px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      h3 { font-size: 1.05rem; margin: 0; }
+
+      p { margin: 0 0 12px; }
+
+      .summary { font-size: 1.05rem; }
+
+      ul { margin: 8px 0 0; padding-left: 20px; }
+      li { margin-bottom: 6px; }
+      li::marker { color: var(--faint); }
+
+      .item { margin-bottom: 32px; }
+      .item:last-child { margin-bottom: 0; }
+
+      .item-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 4px 16px;
+        flex-wrap: wrap;
+      }
+
+      .item-sub { color: var(--muted); }
+      .date { color: var(--faint); font-size: 0.9rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+      .engagement { margin-top: 16px; }
+      .engagement h4 { font-size: 0.95rem; margin: 0; }
+      .engagement .stack { color: var(--faint); font-size: 0.85rem; font-weight: 400; }
+
+      .writing { list-style: none; padding: 0; margin: 0; }
+
+      .writing li {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 4px 16px;
+        flex-wrap: wrap;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+        margin: 0;
+      }
+
+      .writing li:last-child { border-bottom: none; }
+      .writing a { color: var(--text); font-weight: 500; }
+      .writing a:hover { color: var(--accent); }
+
+      .talk { margin-bottom: 20px; }
+      .talk-links { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.9rem; margin-top: 4px; }
+
+      .skills { display: grid; grid-template-columns: 180px 1fr; gap: 10px 20px; }
+      .skills dt { font-weight: 600; font-size: 0.9rem; }
+      .skills dd { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+      .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+      .tag {
+        background: var(--accent-soft);
+        color: var(--text);
+        border-radius: 4px;
+        padding: 2px 8px;
+        font-size: 0.85rem;
+      }
+
+      footer {
+        color: var(--faint);
+        font-size: 0.85rem;
+        text-align: center;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+      }
+
+      @media (max-width: 560px) {
+        .page { padding-top: 40px; }
+        h1 { font-size: 2rem; }
+        .skills { grid-template-columns: 1fr; gap: 2px; }
+        .skills dd { margin-bottom: 12px; }
+      }
+
+      @media print {
+        :root { --bg: #fff; --surface: #fff; --text: #000; --muted: #333; --faint: #555; --accent: #000; --accent-soft: #eee; }
+        .page { padding: 0; max-width: none; }
+        section { break-inside: auto; margin-bottom: 28px; }
+        .item, .talk { break-inside: avoid; }
+        footer { display: none; }
+      }
+    </style>
   </head>
   <body>
-    <div class="hello">
-      <h1>paltaie.com</h1>
-      <h2 class="fa-4x">
-        <a class="linkedin" href="https://linkedin.com/in/paltaie"><i class="fab fa-linkedin"></i></a>
-        <a class="twitter"  href="https://twitter.com/paltaie"><i class="fab fa-twitter"></i></a>
-      </h2>
+    <div class="page">
+      <header>
+        <h1>Patrick Altaie</h1>
+        <p class="role">Principal Engineer at <a href="https://iconsolutions.com">Icon Solutions</a></p>
+        <div class="meta">
+          <span><i class="fa-solid fa-location-dot"></i>London, UK</span>
+          <span><i class="fa-solid fa-building-columns"></i>Fintech &amp; payments</span>
+        </div>
+        <div class="links">
+          <a href="https://linkedin.com/in/paltaie"><i class="fa-brands fa-linkedin"></i>LinkedIn</a>
+          <a href="https://github.com/paltaie"><i class="fa-brands fa-github"></i>GitHub</a>
+          <a href="https://twitter.com/paltaie"><i class="fa-brands fa-x-twitter"></i>Twitter</a>
+          <a href="https://iconsolutions.com/blog/author/patrick-altaie"><i class="fa-solid fa-pen-nib"></i>Blog</a>
+        </div>
+      </header>
+
+      <section>
+        <h2>About</h2>
+        <p class="summary">
+          I design and build resilient, supportable and fault-tolerant systems for fintech and payments,
+          and have done for over fifteen years. I'm a principal engineer for IPF, Icon's payments platform, where I make
+          the calls on architecture and technical direction.
+        </p>
+        <p>
+          I write and speak about reactive systems, distributed data and the practical side of keeping a large Java
+          codebase healthy. I like working in teams, sharing what I know and helping people grow. I also contribute
+          to open source.
+        </p>
+      </section>
+
+      <section>
+        <h2>Writing</h2>
+        <ul class="writing">
+          <li><a href="https://iconsolutions.com/blog/adventures-in-ai-apathy">Adventures in AI apathy</a><span class="date">Sep 2026</span></li>
+          <li><a href="https://iconsolutions.com/blog/we-invested-in-cookie-cutters.-now-the-code-writes-itself">We invested in cookie cutters. Now the code writes itself.</a><span class="date">Jul 2026</span></li>
+          <li><a href="https://iconsolutions.com/blog/i-got-opentelemetry-to-work-but-why-was-it-so-complicated">I got OpenTelemetry to work. But why was it so complicated?</a><span class="date">Jan 2025</span></li>
+          <li><a href="https://iconsolutions.com/blog/upgrading-to-java17">Upgrading to Java 17, or: how I learned to stop worrying and love NoSuchMethodError</a><span class="date">Jun 2024</span></li>
+          <li><a href="https://iconsolutions.com/blog/the-clash-of-the-frameworks">The clash of the frameworks</a><span class="date">Jan 2021</span></li>
+          <li><a href="https://tinyurl.com/paltaieblogpost">Clustering and distributed data: the winning combination?</a><span class="date">2018</span></li>
+          <li><a href="https://iconsolutions.com/blog/reactive-systems-lets-write-tftp-server-with-akka">Reactive Systems: Let's write a TFTP server with Akka</a><span class="date">May 2018</span></li>
+          <li><a href="https://iconsolutions.com/blog/reactive-systems-how-to-fail-nicely">Reactive Systems: How to Fail Nicely</a><span class="date">Mar 2018</span></li>
+          <li><a href="https://iconsolutions.com/blog/reactive-systems-its-actors-all-the-way-down">Reactive Systems: It's Actors All the Way Down</a><span class="date">Dec 2017</span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Speaking</h2>
+        <div class="talk">
+          <div class="item-head">
+            <h3>Clustering and Distributed Data: The Winning Combination?</h3>
+            <span class="date">2018</span>
+          </div>
+          <div class="talk-links">
+            <a href="https://www.youtube.com/watch?v=Y68rHsByv40"><i class="fa-brands fa-youtube"></i> Reactive Summit 2018</a>
+            <a href="https://skillsmatter.com/skillscasts/13503-clustering-and-distributed-data-the-winning-combination"><i class="fa-solid fa-microphone"></i> London Java Community</a>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Experience</h2>
+
+        <div class="item">
+          <div class="item-head">
+            <h3>Icon Solutions</h3>
+            <span class="date">Sep 2013 – Present</span>
+          </div>
+          <div class="item-sub">Principal Engineer · London</div>
+
+          <div class="engagement">
+            <h4>IPF, Icon's payments platform <span class="stack">· Akka, Spring, MongoDB, Kafka, Camel, Kubernetes</span></h4>
+            <ul>
+              <li>Principal engineer for IPF, responsible for its technical design and architecture</li>
+              <li>Led the migration to Akka Cluster Sharding, which serialised payment flow execution and eliminated optimistic locking issues</li>
+              <li>Subject-matter expert for building the product in line with the Reactive Manifesto</li>
+              <li>Moved the IPF reference environment from Docker Compose to Kubernetes</li>
+              <li>Built the CI/CD pipeline for configuring and deploying IPF at BNP Paribas, with on-site support in Paris</li>
+              <li>Advised a Tier 1 US bank on where IPF fits in its payments landscape</li>
+            </ul>
+          </div>
+
+          <div class="engagement">
+            <h4>HSBC: Customer Due Diligence <span class="stack">· Spring Integration, Oracle, WebSphere</span></h4>
+            <ul>
+              <li>Technical lead for the workstream migrating SOAP web services to REST microservices</li>
+              <li>Built an API gateway that authenticates time-sensitive tokens as a service, plus a portable client library for external callers</li>
+              <li>DevOps lead: automated environment provisioning, cutting lead time from months to hours</li>
+              <li>Built telemetry tooling and a user-facing test harness for CDD implementations</li>
+              <li>Ran on-site knowledge transfer in Guangzhou and Mexico City</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-head">
+            <h3>National Australia Bank</h3>
+            <span class="date">Jan 2010 – Sep 2013</span>
+          </div>
+          <div class="item-sub">Designer / Analyst Programmer</div>
+          <ul>
+            <li>Integration stream lead for the mission-critical Cashiering project, which integrated mailroom cashiering across the Sydney and Melbourne clearing houses</li>
+            <li>Stream lead for a straight-through processing system that automated over 8,000 manual transactions a month</li>
+            <li>Built enterprise SOA solutions with TIBCO BusinessWorks, and high-throughput business rules with IBM ILOG JRules</li>
+            <li>Requirements analysis, design and specifications for work ranging from support patches to $2.5M projects</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="item-head">
+            <h3>University of Technology, Sydney</h3>
+            <span class="date">Jun 2009 – Nov 2009</span>
+          </div>
+          <div class="item-sub">Tutor / Lab Assistant</div>
+          <ul>
+            <li>Ran tutorials and Java lab sessions for Applications Programming, teaching the fundamentals of object-oriented design</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Skills</h2>
+        <dl class="skills">
+          <dt>Java</dt>
+          <dd>Akka, Spring, CompletableFuture, Streams, Guice, Dagger, Lombok, JPA, JMS</dd>
+          <dt>Messaging</dt>
+          <dd>Kafka, ActiveMQ/Artemis, TIBCO EMS, Apache Camel, Spring Integration</dd>
+          <dt>Architecture</dt>
+          <dd>Reactive systems, cloud-native and 12-factor applications</dd>
+          <dt>Platforms</dt>
+          <dd>Kubernetes (EKS, AKS, IBM Cloud), Docker, Jenkins, Ansible</dd>
+          <dt>Observability</dt>
+          <dd>OpenTelemetry, Prometheus, Grafana, Kamon, Lightbend Telemetry</dd>
+          <dt>Data</dt>
+          <dd>MongoDB, Oracle, MySQL, H2</dd>
+          <dt>Security</dt>
+          <dd>TLS, CMS/PKCS#7, OpenID Connect, OAuth</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        <div class="item">
+          <div class="item-head">
+            <h3>BSc Information Technology</h3>
+            <span class="date">2012</span>
+          </div>
+          <div class="item-sub">University of Technology, Sydney · First Class Honours, Distinction</div>
+        </div>
+        <div class="item">
+          <div class="item-head">
+            <h3>Diploma in IT Professional Practice</h3>
+            <span class="date">2011</span>
+          </div>
+          <div class="item-sub">University of Technology, Sydney</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Languages</h2>
+        <div class="tags">
+          <span class="tag">Spanish: B2</span>
+          <span class="tag">Arabic: professional working proficiency</span>
+        </div>
+      </section>
+
+      <footer>paltaie.com</footer>
     </div>
   </body>
 </html>
